@@ -38,7 +38,7 @@ export default function Index({auth, projects}){
                                             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                                                 Apple MacBook Pro 17"
                                             </th>
-                                            <td className="px-6 py-4">$999</td>
+                                            <td className="px-6 py-4">$9995</td>
                                         </tr>
                                     </tbody>
                                 </table>
