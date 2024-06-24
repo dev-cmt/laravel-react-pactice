@@ -1,5 +1,6 @@
+import Pagination from "@/Components/Pagination";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 
 export default function Index({auth, projects}){
     return (
@@ -17,31 +18,37 @@ export default function Index({auth, projects}){
 
                             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <thead className="text-xs text-gray-700 uppercase dark:text-gray-400">
+                                    <thead className="bg-gray-400 border-b-2 border-gray-700 text-xs text-gray-900 uppercase dark:text-gray-900">
                                         <tr>
-                                            <th scope="col" className="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                                                Product name
-                                            </th>
-                                            <th scope="col" className="px-6 py-3">
-                                                Color
-                                            </th>
-                                            <th scope="col" className="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                                                Category
-                                            </th>
-                                            <th scope="col" className="px-6 py-3">
-                                                Price
-                                            </th>
+                                            <th scope="col" className="px-3 py-3">ID</th>
+                                            <th scope="col" className="px-3 py-3">Image</th>
+                                            <th scope="col" className="px-3 py-3">Name</th>
+                                            <th scope="col" className="px-3 py-3">Status</th>
+                                            <th scope="col" className="px-3 py-3">Create Date</th>
+                                            <th scope="col" className="px-3 py-3">Due Date</th>
+                                            <th scope="col" className="px-3 py-3">Crated By</th>
+                                            <th scope="col" className="px-3 py-3 text-right">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="border-b border-gray-200 dark:border-gray-700">
-                                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                                Apple MacBook Pro 17"
-                                            </th>
-                                            <td className="px-6 py-4">$9995</td>
-                                        </tr>
+                                        {projects.data.map((project)=>(
+                                            <tr className="border-b border-gray-200 dark:border-gray-700">
+                                                <th className="px-3 py-2">{project.id}</th>
+                                                <td className="px-3 py-2"><img src={project.image_path} width="60"/></td>
+                                                <td className="px-3 py-2">{project.name}</td>
+                                                <td className="px-3 py-2">{project.status}</td>
+                                                <td className="px-3 py-2">{project.created_at}</td>
+                                                <td className="px-3 py-2">{project.due_date}</td>
+                                                <td className="px-3 py-2">{project.createdBy.name}</td>
+                                                <td className="px-3 py-2">
+                                                    <Link href={route('project.edit', project.id)} className="font-medium text-green-600 dark:text-green-400 hover:underline mx-1">Edit</Link>
+                                                    <Link href={route('project.edit', project.id)} className="font-medium text-red-600 dark:text-red-400 hover:underline mx-1">Delete</Link>
+                                                </td>
+                                            </tr>
+                                        ))}
                                     </tbody>
                                 </table>
+                                <Pagination links={projects.meta.links} />
                             </div>
 
                             <pre>{JSON.stringify(projects, undefined, 2)}</pre>
