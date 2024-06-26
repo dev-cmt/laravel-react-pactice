@@ -34,7 +34,6 @@ export default function Index({auth, projects, queryParams = null}){
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900 dark:text-gray-100">
-                            
 
                             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
